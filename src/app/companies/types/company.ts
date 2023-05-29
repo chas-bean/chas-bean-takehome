@@ -1,10 +1,10 @@
 export type Company = {
-  ein: Number;
+  ein: number;
   company_name: string;
-  plan_year: Number;
-  employee_count: Number;
+  plan_year: number;
+  employee_count: number;
   company_state: string;
-  premium_sum: Number;
-  broker_commission_sum: Number;
-  participants_sum: Number;
+  premium_sum: bigint;
+  broker_commission_sum: bigint;
+  participants_sum: number;
 };

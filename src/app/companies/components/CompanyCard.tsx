@@ -12,24 +12,31 @@ export default function CompanyCard({ company }: CompanyCardProps) {
 
   return (
     <div>
-      <p>{company.company_name}</p>
+      <h5 data-cy="company-name">{company.company_name}</h5>
       <p>State</p>
-      <p>{company.company_state}</p>
+      <p data-cy="company-state">{company.company_state}</p>
       <p>Employees</p>
-      <p>{company.employee_count.toLocaleString()}</p>
+      <p data-cy="employee-count">{company.employee_count.toLocaleString()}</p>
       <p>Year</p>
-      <p>{company.plan_year.toLocaleString()}</p>
-      <button onClick={() => setIsExpanded(!isExpanded)}>
+      <p data-cy="plan-year">{company.plan_year.toLocaleString()}</p>
+      <button
+        data-cy="show-more-button"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
         Show {isExpanded ? "less" : "more"}
       </button>
       {isExpanded && (
-        <div>
+        <div data-cy="details">
           <p>Premium</p>
-          <p>{company.premium_sum.toLocaleString()}</p>
+          <p data-cy="premium-sum">{company.premium_sum.toLocaleString()}</p>
           <p>Participants</p>
-          <p>{company.participants_sum.toLocaleString()}</p>
+          <p data-cy="participants-sum">
+            {company.participants_sum.toLocaleString()}
+          </p>
           <p>Broker Comissions</p>
-          <p>{company.broker_commission_sum.toLocaleString()}</p>
+          <p data-cy="broker-commision-sum">
+            {company.broker_commission_sum.toLocaleString()}
+          </p>
         </div>
       )}
     </div>

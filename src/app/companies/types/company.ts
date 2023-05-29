@@ -4,7 +4,7 @@ export type Company = {
   plan_year: number;
   employee_count: number;
   company_state: string;
-  premium_sum: bigint;
-  broker_commission_sum: bigint;
+  premium_sum: number;
+  broker_commission_sum: number;
   participants_sum: number;
 };

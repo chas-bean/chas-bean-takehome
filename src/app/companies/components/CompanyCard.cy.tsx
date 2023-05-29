@@ -4,10 +4,24 @@ import companies from "../constants/companies";
 import { Company } from "../types/company";
 
 describe("<CompanyCard />", () => {
+  let brokerCommissionSumFormatted: string;
   let company: Company;
+  let premiumSumFormatted: string;
 
   before(() => {
     company = companies[0];
+
+    brokerCommissionSumFormatted = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumSignificantDigits: 2,
+    }).format(company.broker_commission_sum);
+
+    premiumSumFormatted = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumSignificantDigits: 2,
+    }).format(company.premium_sum);
   });
 
   it("displays company name, company state, plan year and employee count", () => {
@@ -40,16 +54,16 @@ describe("<CompanyCard />", () => {
     cy.get("[data-cy=details]")
       .children()
       .get("[data-cy=premium-sum]")
-      .should("have.text", company.premium_sum.toLocaleString());
+      .should("contain", premiumSumFormatted);
 
     cy.get("[data-cy=details]")
       .children()
       .get("[data-cy=broker-commision-sum]")
-      .should("have.text", company.broker_commission_sum.toLocaleString());
+      .should("contain", brokerCommissionSumFormatted);
 
     cy.get("[data-cy=details]")
       .children()
       .get("[data-cy=participants-sum]")
-      .should("have.text", company.participants_sum.toLocaleString());
+      .should("contain", company.participants_sum.toLocaleString());
   });
 });

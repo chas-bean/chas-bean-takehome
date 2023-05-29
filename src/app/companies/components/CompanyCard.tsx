@@ -59,6 +59,7 @@ export default function CompanyCard({
       </div>
 
       <button
+        aria-label="show/hide company details"
         className="pb-4 text-cyan-500"
         data-cy="show-more-button"
         onClick={() => setIsExpanded(!isExpanded)}
@@ -67,7 +68,7 @@ export default function CompanyCard({
       </button>
 
       {isExpanded && (
-        <div className="px-16" data-cy="details">
+        <div aria-expanded="true" className="px-16" data-cy="details">
           <p className="leading-8" data-cy="premium-sum">
             <b>Premium:</b> {premiumSum}
           </p>
